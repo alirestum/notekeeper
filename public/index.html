@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NoteKeeper</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center pt-5 title" id="title">NoteKeeper</h1>
+
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-box" class="col-md-6 text-center mt-5">
+            <h3 class="title mt-3">Login</h3>
+            <form action="notes.html">
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control" id="usernameInput" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                </div>
+                <div class="form-group align-items-center">
+                   <button type="submit" class="btn" id="submit" onclick="">Login</button>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col text-left">
+                            <a href="register.html">Not a Member? Register Here!</a>
+                        </div>
+                        <div class="col text-right">
+                            <a href="forgot_password.html">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
