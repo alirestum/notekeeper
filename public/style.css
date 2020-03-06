@@ -20,7 +20,7 @@ body {
     background-color: #739154;
 }
 
-.note{
+.note-inner{
     background-color: white;
     margin-left: 0.6em;
     margin-top: 0.6em;
@@ -66,4 +66,18 @@ body {
 
 a{
     color: #4D5359;
+}
+
+.equal > .equal-child:nth-child(4n+1) {
+    clear: left;
+}
+
+@media (max-width: 768px) {
+    .equal > .equal-child:nth-child(2n+1) {
+        clear: left;
+    }
+}
+
+.note{
+    padding: 0;
 }

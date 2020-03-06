@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NoteKeeper</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/207268744d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="notes.html">Notes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="new_note.html">New Note</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">NoteKeeper</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="profile.html">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center mt-3 title">Profile</h1>
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-box" class="col-md-6 text-center mt-5">
+            <form action="profile.html">
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control" id="nameInput" value="Ex Ample">
+                </div>
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control" id="usernameInput" value="example">
+                </div>
+                <div class="form-group text-left">
+                    <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+                    <small id="emailHelp" class="form-text text-muted">You can change your password by typing in the new one.</small>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="passwordInput2" placeholder="Password Again">
+                </div>
+                <div class="form-group align-items-center">
+                    <button type="submit" class="btn" id="submit">Save</button>
+                </div>
+                <div class="form-group align-items-center">
+                    <button type="submit" class="btn btn-danger" id="remove">Delete profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="notes.html">Notes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="new_note.html">New Note</a>
             </li>
         </ul>
@@ -41,18 +41,18 @@
     </div>
 </nav>
 <div class="container">
-    <h1 class="text-center mt-3 title">Edit Note</h1>
+    <h1 class="text-center mt-3 title">New Note</h1>
     <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-box" class="col-md-6 text-center mt-5">
             <form action="notes.html">
                 <div class="form-group mt-4">
-                    <input type="text" class="form-control" id="usernameInput" value="NoteTitle">
+                    <input type="text" class="form-control" id="usernameInput" placeholder="Enter the name of the note">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum imperdiet tellus dolor.</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Note content"></textarea>
                 </div>
                 <div class="form-group text-left">
-                    <input type="text" class="form-control" value="#tag1 #tag2 #tag3">
+                    <input type="text" class="form-control" placeholder="Enter tags for the note">
                     <small id="emailHelp" class="form-text text-muted">Required format: #tag1 #tag2</small>
                 </div>
                 <div class="form-group align-items-center">
@@ -62,8 +62,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
-
-
