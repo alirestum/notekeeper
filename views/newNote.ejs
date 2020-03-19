@@ -6,23 +6,36 @@
     <h1 class="text-center mt-3 title">New Note</h1>
     <div id="login-row" class="row justify-content-center align-items-center">
         <div id="login-box" class="col-md-6 text-center mt-5">
-            <form action="notes.html">
+            <% if (locals.errors !== null)  { %>
+                    <div class="alert alert-danger" id="note-name-warning" role="alert">
+                        <%= locals.errors[0].msg %>
+                    </div>
+            <% } %>
+                <% if (locals.successfulSave == true) { %>
+                    <div class="alert alert-success" id="note-name-warning" role="alert">
+                        Note successfully saved!
+                    </div>
+                <% } %>
+            <form action="/dashboard/newNote" method="post">
                 <div class="form-group mt-4">
-                    <input type="text" class="form-control" id="usernameInput" placeholder="Enter the name of the note">
+                    <input type="text" name="noteName" class="form-control" id="usernameInput" placeholder="Enter the name of the note">
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Note content"></textarea>
+                    <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3" placeholder="Note content"></textarea>
                 </div>
                 <div class="form-group text-left">
-                    <input type="text" class="form-control" placeholder="Enter tags for the note">
+                    <input type="text" class="form-control" name="tags" placeholder="Enter tags for the note">
                     <small id="emailHelp" class="form-text text-muted">Required format: #tag1 #tag2</small>
                 </div>
                 <div class="form-group align-items-center">
-                    <button type="submit" class="btn" id="submit" onclick="">Save</button>
+                    <button type="submit" class="btn" id="submit">Save</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+
+
 
 <%- include('footer'); -%>

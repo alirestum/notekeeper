@@ -1,39 +1,36 @@
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title text-center">Note5 Title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            imperdiet tellus dolor. Sed nec
-            sapien non ex varius lobortis ac a massa. Integer pulvinar varius odio non dictum. Suspendisse vel
-            mi
-            hendrerit nisi tempus congue. Proin id quam
-            lacus. Nunc dapibus sollicitudin elit id vehicula. Mauris tempus eleifend tellus at placerat. Etiam
-            non
-            arcu sit amet dolor sodales auctor. Curabitur laoreet eros sit amet mauris dapibus sodales non sed
-            turpis.</p>
-    </div>
-    <div class="card-footer">
-        <div class="container note-footer-container" >
-            <div class="row">
-                <div class="col-sm col-note-footer">
-                    <ul class="list-inline pl-3">
-                        <li class="list-inline-item tag"><a href="tags.html" class="tag">#tag1</a></li>
-                        <li class="list-inline-item tag"><a href="tags.html" class="tag">#tag2</a></li>
-                        <li class="list-inline-item tag"><a href="tags.html" class="tag">#tag3</a></li>
-                    </ul>
+<% notes.forEach( (note) => { %>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title text-center"><a href=<%= "dashboard/note/" + note.noteId %>><%= note.name %></a></h5>
+            <p class="card-text"><%= note.content %></p>
+        </div>
+        <div class="card-footer">
+            <div class="container note-footer-container">
+                <div class="row">
+                    <div class="col-sm col-note-footer">
+                        <% if (note.tags.length !== 0) { %>
+                            <ul class="list-inline pl-3">
+                                <% note.tags.forEach( (tag) => { %>
+                                    <li class="list-inline-item tag"><a href="tags.html" class="tag"><%= tag %></a></li>
+                                <% }); %>
+                            </ul>
+                        <% } %>
+                    </div>
+                    <div class="col-sm d-flex justify-content-end col-note-footer">
+                        <span>N.o. attachments: 20</span>
+                    </div>
                 </div>
-                <div class="col-sm d-flex justify-content-end col-note-footer">
-                    <span>N.o. attachments: 20</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm ">
-                    <span>Last modified: 2020.02.10.</span>
-                </div>
-                <div class="col-sm d-flex justify-content-end col-note-footer">
-                    <a href="edit_note.html" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
-                    <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
+                <div class="row">
+                    <div class="col-sm ">
+                        <span>Last modified: <%= note.lastModified.toLocaleString() %></span>
+                    </div>
+                    <div class="col-sm d-flex justify-content-end col-note-footer">
+                        <a href="/dashboard/editNote" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
+                        <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+<% }); %>

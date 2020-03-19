@@ -1,0 +1,34 @@
+<%- include('header'); %>
+
+<%- include('navbar', {active: active}); %>
+
+<div class="container">
+    <h1 class="text-center mt-3 title">Profile</h1>
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-box" class="col-md-6 text-center mt-5">
+            <form action="profile.html">
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control" id="nameInput" value="Ex Ample">
+                </div>
+                <div class="form-group mt-4">
+                    <input type="text" class="form-control" id="usernameInput" value="example">
+                </div>
+                <div class="form-group text-left">
+                    <input type="password" class="form-control" id="passwordInput1" placeholder="Password">
+                    <small id="emailHelp" class="form-text text-muted">You can change your password by typing in the new one.</small>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="passwordInput2" placeholder="Password Again">
+                </div>
+                <div class="form-group align-items-center">
+                    <button type="submit" class="btn" id="submit">Save</button>
+                </div>
+                <div class="form-group align-items-center">
+                    <button type="submit" class="btn btn-danger" id="remove">Delete profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('footer'); -%>
