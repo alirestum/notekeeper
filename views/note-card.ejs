@@ -12,7 +12,7 @@
                         <% if (note.tags.length !== 0) { %>
                             <ul class="list-inline pl-3">
                                 <% note.tags.forEach( (tag) => { %>
-                                    <li class="list-inline-item tag"><a href="tags.html" class="tag"><%= tag %></a></li>
+                                    <li class="list-inline-item tag"><a href="<%= "/dashboard/tag?tag=" + tag.replace('#', '') %>" class="tag"><%= tag %></a></li>
                                 <% }); %>
                             </ul>
                         <% } %>
@@ -26,8 +26,8 @@
                         <span>Last modified: <%= note.lastModified.toLocaleString() %></span>
                     </div>
                     <div class="col-sm d-flex justify-content-end col-note-footer">
-                        <a href="/dashboard/editNote" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
-                        <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
+                        <a href="<%= "/dashboard/editNote?noteId=" + note.noteId%>" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
+                        <a href="<%= "/dashboard/removeNote?noteId=" + note.noteId %>" class="icon"><i class="fas fa-trash-alt icon"></i></a>
                     </div>
                 </div>
             </div>
