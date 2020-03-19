@@ -3,12 +3,9 @@ const bodyParser = require('body-parser');
 const app = express();
 require('./config/passport');
 const db = require('./config/database');
-const User = require('./models/User');
-const initializePassport = require('./config/passport');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
-
 
 //Init Passport
 require('./config/passport')(passport);

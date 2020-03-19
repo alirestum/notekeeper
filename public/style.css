@@ -119,3 +119,19 @@ a{
 .submit{
     background-color: #739154;
 }
+
+.card-columns{
+    margin-top: 0.5em;
+}
+
+.col-note-footer{
+    padding: 0;
+}
+
+.note-footer-container{
+    padding-left: 0;
+}
+
+.note-actions{
+    border-top: 1px solid rgba(0,0,0, .125);
+}
