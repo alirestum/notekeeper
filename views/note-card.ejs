@@ -2,7 +2,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title text-center"><a href=<%= "dashboard/note/" + note.noteId %>><%= note.name %></a></h5>
+            <h5 class="card-title text-center"><a href="<%= "/dashboard/note/" + note.noteId %>"><%= note.name %></a></h5>
             <p class="card-text"><%= note.content %></p>
         </div>
         <div class="card-footer">
@@ -18,7 +18,7 @@
                         <% } %>
                     </div>
                     <div class="col-sm d-flex justify-content-end col-note-footer">
-                        <span>N.o. attachments: 20</span>
+                        <span>N.o. attachments: <%= note.attachments.length %></span>
                     </div>
                 </div>
                 <div class="row">

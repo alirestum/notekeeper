@@ -3,36 +3,33 @@
 <%- include('navbar', {active: active}); %>
 
 <div class="container">
-    <h1 class="text-center mt-3 title"><%= note.name%></h1>
-    <h6 class="text-center title"><% note.tags.forEach((tag) => { %><%= tag %><% });%></h6>
+    <h1 class="text-center mt-3 title"><%= note.name %></h1>
+    <h6 class="text-center title">
+        <% note.tags.forEach((tag) => { %><%= tag %>
+        <% }); %>
+    </h6>
     <div id="login-row" class="row justify-content-center align-items-center">
         <div id="note-box" class="col-md-6 text-center mt-5">
             <p class="text-justify m-3" id="note-content"><%= note.content %></p>
             <div id="attachment-box">
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="https://www.thispersondoesnotexist.com/" class="attachment">Attachment.js 1</a>
-                        <span class="badge badge-pill">
+                <% if (note.attachments.length !== 0) { %>
+                    <ul class="list-group">
+                        <% note.attachments.forEach((attachment) => { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <a href="<%= attachment.url %>" class="attachment"><%= attachment.name %></a>
+                                <span class="badge badge-pill">
                             <a href="edit_attachment.html" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
-                            <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
+                            <a href="<%= "/dashboard/attachments/delete?noteId=" + note.noteId + "&attachmentName=" + attachment.name%>"
+                               class="icon"><i class="fas fa-trash-alt icon"></i></a>
                         </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="https://thiscatdoesnotexist.com/" class="attachment">Attachment.js 2</a>
-                        <span class="badge badge-pill">
-                            <a href="edit_attachment.html" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
-                            <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
-                        </span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <a href="https://thisartworkdoesnotexist.com/" class="attachment">Attachment.js 3</a>
-                        <span class="badge badge-pill">
-                            <a href="edit_attachment.html" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
-                            <a href="#" class="icon"><i class="fas fa-trash-alt icon"></i></a>
-                        </span>
-                    </li>
-                </ul>
-                <a href="new_attachment.html"><button class="btn mt-3 mb-3 submit">Add new attachment</button></a>
+                            </li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+
+                <a href="<%= "/dashboard/attachments/new?noteId=" + note.noteId %>">
+                    <button class="btn mt-3 mb-3 submit">Add new attachment</button>
+                </a>
             </div>
         </div>
     </div>
