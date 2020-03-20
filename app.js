@@ -6,7 +6,10 @@ const db = require('./config/database');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
-
+const User = require('./models/User').user;
+const Note = require('./models/Note');
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 //Init Passport
 require('./config/passport')(passport);
 
@@ -34,6 +37,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/dashboard', require('./routes/dashboard'));
+app.use('/user', require('./routes/user'));
 
 
 

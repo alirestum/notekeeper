@@ -12,21 +12,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    notes: [{type: mongoose.Schema.Types.ObjectId, ref: 'Note'}]
 });
 
 const User = mongoose.model('User', UserSchema);
 
-const findUserByUsername = async function (username) {
-    await User.find().where('username').equals(username).exec().then( user => {
-        return user[0];
-    });
-};
-
-const findUserById = async function (id) {
-
-};
-
 module.exports.user = User;
-module.exports.findUserByUsername = findUserByUsername;
-

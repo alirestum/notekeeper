@@ -135,3 +135,26 @@ a{
 .note-actions{
     border-top: 1px solid rgba(0,0,0, .125);
 }
+
+
+#note-name-warning{
+    margin-top: 0.5em;
+}
+
+
+#profile-box{
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    -moz-box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    padding-top: 0.5em;
+}
+
+
+#new-attachment-box{
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    -moz-box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
+    padding-top: 0.5em;
+}
