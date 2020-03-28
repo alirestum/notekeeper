@@ -18,7 +18,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <a href="<%= attachment.url %>" class="attachment"><%= attachment.name %></a>
                                 <span class="badge badge-pill">
-                            <a href="edit_attachment.html" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
+                            <a href="<%= "/dashboard/attachments/edit?attachmentName=" + attachment.name + "&noteId=" + note.noteId%>" class="icon"><i class="fas fa-edit icon mr-1"></i></a>
                             <a href="<%= "/dashboard/attachments/delete?noteId=" + note.noteId + "&attachmentName=" + attachment.name%>"
                                class="icon"><i class="fas fa-trash-alt icon"></i></a>
                         </span>
@@ -31,6 +31,9 @@
                     <button class="btn mt-3 mb-3 submit">Add new attachment</button>
                 </a>
             </div>
+            <form action="/dashboard">
+                <button type="submit" class="btn back"><i class="fas fa-long-arrow-alt-left"></i> Back</button>
+            </form>
         </div>
     </div>
 </div>

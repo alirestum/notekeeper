@@ -77,5 +77,33 @@ router.get('/forgotPassword', (req, res) =>{
    res.render('forgot-password');
 });
 
+router.post('/forgotPassword', async(req, res) => {
+
+    await User.findOne().where('username').equals(req.body.username).then((user) =>{
+        if (!user){
+            res.locals.error = 'No user with that username!';
+            res.render('forgot-password');
+        } else{
+            //Source: https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+            let result           = '';
+            let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let charactersLength = characters.length;
+            for ( var i = 0; i < 7; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            bcrypt.genSalt(10,(err, salt) =>{
+               bcrypt.hash(result, salt, (err, hash)=> {
+                 User.findOneAndUpdate({username: req.body.username}, {password: hash}).exec();
+                   res.locals.newpw = result;
+                   res.locals.success_msg = true;
+                   res.render('forgot-password');
+               }) ;
+            });
+        }
+    });
+
+
+
+});
 
 module.exports = router;

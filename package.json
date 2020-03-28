@@ -8,7 +8,7 @@
     "dev": "nodemon"
   },
   "keywords": [],
-  "author": "",
+  "author": "Restum Ali",
   "license": "ISC",
   "dependencies": {
     "await-to-js": "^2.1.1",
@@ -28,7 +28,6 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
-    "ejs-lint": "^1.0.1"
+    "dotenv": "^8.2.0"
   }
 }

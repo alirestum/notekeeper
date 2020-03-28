@@ -158,3 +158,13 @@ a{
     box-shadow: 0px 0px 20px -4px rgba(77,83,89,0.82);
     padding-top: 0.5em;
 }
+
+
+.back{
+    margin-bottom: 0.5em;
+    background-color: #739154;
+}
+
+.icon:hover {
+    color: #5F7745;
+}

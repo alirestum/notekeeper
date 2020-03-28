@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Attachment = require('./Attachment');
+const Note = require('./Note');
 
 const UserSchema = new mongoose.Schema({
     name: {

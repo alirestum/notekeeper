@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User').user;
+const Attachment = require('../models/Attachment');
+const Note = require('../models/Note');
 const {check, validationResult} = require('express-validator');
 const {ensureAuthenticated} = require('../middlewares/authMiddleware');
 const bcrypt = require('bcrypt');
@@ -80,5 +82,27 @@ router.post('/profile', [
             });
         });
     });
+
+
+router.post('/profile/deleteProfile', async (req, res) => {
+    //Find notes and attachments of the user and delete them.
+    await User.findOne().where('username').equals(req.user.username).populate('notes').then(async (user) =>{
+        await user.notes.forEach( async (note) => {
+            await Note.findOne().where('noteId').equals(note.noteId).populate('attachments').then(async (note) =>{
+                note.attachments.forEach(async (atch) =>{
+                   await Attachment.findOneAndDelete({_id: atch._id}).exec();
+                });
+            });
+        });
+           /* */
+
+        await Note.deleteMany({owner: user._id}).exec();
+    });
+
+    //Find user and delete
+    await User.findOneAndDelete({username: req.user.username}).exec();
+
+    res.render('login');
+});
 
 module.exports = router;
