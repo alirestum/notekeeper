@@ -57,8 +57,11 @@ router.get('/tag', async (req, res) => {
 router.get('/note/:noteId', (req, res) => {
     //Find the note with the specified id
     Note.findOne().where('noteId').equals(req.params.noteId)
-        .populate('attachments').then((note) => {
-        res.render('note', {active: '', note: note});
+        .populate('attachments').then((note, err) => {
+            if (err){
+                res.locals.error = err;
+            }
+            res.render('note', {active: '', note: note});
     });
 
 });
@@ -179,7 +182,7 @@ router.post('/attachments/new',
 
 router.get('/attachments/delete', (req, res) => {
     //I don't know what is happening here. It was very late in the evening (morning?)....
-    //BUT IT WORKS. I'm almost 100% percent there is an easier way to remove an attachment.
+    //BUT IT WORKS. I'm almost 100 percent sure that there is an easier way to remove an attachment.
     Note.findOne().where('noteId').equals(req.query.noteId).then((note) => {
         Attachment.findOne({note: note._id, name: req.query.attachmentName}).then((attachment) => {
             Note.findOneAndUpdate({noteId: note.noteId}, {$pull: {attachments: attachment._id}})
