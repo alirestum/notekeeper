@@ -5,7 +5,9 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const {forwardAuthenticated } = require('../middlewares/authMiddleware');
 const {check, validationResult} = require('express-validator');
-
+const generateNewPassword = require('../middlewares/generateNewPasswordMW');
+const getUserByUsername = require('../middlewares/getUserByUsernameMW');
+const updateUserPassword = require('../middlewares/updateUserPassword')
 
 router.get('/login', forwardAuthenticated, (req, res) => {
     res.render('login');
@@ -77,33 +79,12 @@ router.get('/forgotPassword', (req, res) =>{
    res.render('forgot-password');
 });
 
-router.post('/forgotPassword', async(req, res) => {
-
-    await User.findOne().where('username').equals(req.body.username).then((user) =>{
-        if (!user){
-            res.locals.error = 'No user with that username!';
-            res.render('forgot-password');
-        } else{
-            //Source: https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
-            let result           = '';
-            let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            let charactersLength = characters.length;
-            for ( var i = 0; i < 7; i++ ) {
-                result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            }
-            bcrypt.genSalt(10,(err, salt) =>{
-               bcrypt.hash(result, salt, (err, hash)=> {
-                 User.findOneAndUpdate({username: req.body.username}, {password: hash}).exec();
-                   res.locals.newpw = result;
-                   res.locals.success_msg = true;
-                   res.render('forgot-password');
-               }) ;
-            });
-        }
-    });
-
-
-
+router.post('/forgotPassword',
+    getUserByUsername(User),
+    generateNewPassword(bcrypt),
+    updateUserPassword(User),
+    (req, res) => {
+    res.render('forgot-password');
 });
 
 module.exports = router;

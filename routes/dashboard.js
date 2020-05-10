@@ -5,7 +5,7 @@ const User = require('../models/User').user;
 const Note = require('../models/Note');
 const {check, validationResult} = require('express-validator');
 const Attachment = require('../models/Attachment');
-
+const getNoteMW = require('../middlewares/getNoteMW');
 
 //To see any pages under dashboard the user must be authenticated.
 router.get('/*', ensureAuthenticated);
@@ -54,16 +54,10 @@ router.get('/tag', async (req, res) => {
 
  */
 
-router.get('/note/:noteId', (req, res) => {
-    //Find the note with the specified id
-    Note.findOne().where('noteId').equals(req.params.noteId)
-        .populate('attachments').then((note, err) => {
-            if (err){
-                res.locals.error = err;
-            }
-            res.render('note', {active: '', note: note});
-    });
-
+router.get('/note/:noteId',
+    getNoteMW(Note),
+    (req, res) => {
+    res.render('note', {active: '', note: res.locals.note});
 });
 
 router.get('/newNote', (req, res) => {
